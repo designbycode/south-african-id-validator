@@ -9,7 +9,7 @@ class SouthAfricanIdValidator
     /**
      * @param  string  $idNumber
      * @return bool
-     * Check if id is valid
+     *              Check if id is valid
      */
     public function isValid(string $idNumber): bool
     {
@@ -30,10 +30,8 @@ class SouthAfricanIdValidator
     // Method to validate the ID number using the Luhn Algorithm
     public function isValidLuhn(string $idNumber): bool
     {
-        return (new LuhnAlgorithm())->isValid($idNumber);
+        return (new LuhnAlgorithm)->isValid($idNumber);
     }
-
-
 
     // Method to determine if the ID number is for a male
     public function isMale($idNumber): bool
