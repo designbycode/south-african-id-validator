@@ -1,18 +1,10 @@
-# This is my package south-african-id-validator
+# South African ID Validator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/designbycode/south-african-id-validator.svg?style=flat-square)](https://packagist.org/packages/designbycode/south-african-id-validator)
 [![Tests](https://img.shields.io/github/actions/workflow/status/designbycode/south-african-id-validator/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/designbycode/south-african-id-validator/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/designbycode/south-african-id-validator.svg?style=flat-square)](https://packagist.org/packages/designbycode/south-african-id-validator)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/south-african-id-validator.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/south-african-id-validator)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+The South African ID Validator is a PHP class that validates and extracts information from South African ID numbers. It uses the Luhn Algorithm to validate the ID number and provides methods to determine the gender, citizenship, and birthdate of the individual.
 
 ## Installation
 
@@ -24,10 +16,124 @@ composer require designbycode/south-african-id-validator
 
 ## Usage
 
+
+### Instantiation
+
+To use the South African ID Validator, create an instance of the `SouthAfricanIdValidator` class:
 ```php
-$skeleton = new Designbycode\SouthAfricanIdValidator();
-echo $skeleton->echoPhrase('Hello, Designbycode!');
+$validator = new SouthAfricanIdValidator();
 ```
+### Validation
+
+To validate an ID number, use the `isValid` method:
+```php
+$idNumber = '9404260051081';
+if ($validator->isValid($idNumber)) {
+    echo 'ID number is valid';
+} else {
+    echo 'ID number is invalid';
+}
+```
+### Parsing
+
+To extract information from a valid ID number, use the `parse` method:
+```php
+$idNumber = '9404260051081';
+$parsedData = $validator->parse($idNumber);
+print_r($parsedData);
+```
+Output:
+```
+Array
+(
+    [valid] => 1
+    [birthday] => 1994/04/26
+    [age] => 28
+    [gender] => Male
+    [citizenship] => SA Citizen
+)
+```
+### Gender Determination
+
+To determine the gender of the individual, use the `isMale` or `isFemale` methods:
+```php
+$idNumber = '9404260051081';
+if ($validator->isMale($idNumber)) {
+    echo 'Male';
+} else {
+    echo 'Female';
+}
+```
+### Citizenship Determination
+
+To determine the citizenship of the individual, use the `isSACitizen` or `isPermanentResident` methods:
+```php
+$idNumber = '9404260051081';
+if ($validator->isSACitizen($idNumber)) {
+    echo 'SA Citizen';
+} else {
+    echo 'Permanent Resident';
+}
+```
+**Methods**
+---------
+
+### `isValid(string $idNumber): bool`
+
+Validates the ID number using the Luhn Algorithm and checks if it has a length of 13 digits and is numeric.
+
+### `isLength13(string $idNumber): bool`
+
+Checks if the ID number has a length of 13 digits.
+
+### `isNumber(string $idNumber): bool`
+
+Checks if the ID number is numeric.
+
+### `isValidLuhn(string $idNumber): bool`
+
+Validates the ID number using the Luhn Algorithm.
+
+### `isMale(string $idNumber): bool`
+
+Determines if the ID number is for a male.
+
+### `isFemale(string $idNumber): bool`
+
+Determines if the ID number is for a female.
+
+### `isSACitizen(string $idNumber): bool`
+
+Determines if the ID number is for a South African citizen.
+
+### `isPermanentResident(string $idNumber): bool`
+
+Determines if the ID number is for a permanent resident.
+
+### `parse(string $idNumber): array`
+
+Parses the ID number and returns an array with the following information:
+
+* `valid`: A boolean indicating if the ID number is valid.
+* `birthday`: The birthdate in the format `YYYY/MM/DD`.
+* `age`: The age of the individual.
+* `gender`: The gender of the individual (Male or Female).
+* `citizenship`: The citizenship status of the individual (SA Citizen or Permanent Resident).
+
+**Use Cases**
+------------
+
+### Validating ID numbers in a registration form
+
+Use the `isValid` method to validate ID numbers in a registration form to ensure that only valid ID numbers are accepted.
+
+### Extracting information from ID numbers
+
+Use the `parse` method to extract information from ID numbers, such as birthdate, age, gender, and citizenship, to populate user profiles or perform analytics.
+
+### Determining gender and citizenship
+
+Use the `isMale`, `isFemale`, `isSACitizen`, and `isPermanentResident` methods to determine the gender and
 
 ## Testing
 
