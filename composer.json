@@ -1,0 +1,51 @@
+{
+    "name": "designbycode/south-african-id-validator",
+    "description": "This is my package south-african-id-validator",
+    "keywords": [
+        "designbycode",
+        "south-african-id-validator"
+    ],
+    "homepage": "https://github.com/designbycode/south-african-id-validator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Claude Myburgh",
+            "email": "claude@designbycode.co.za",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "designbycode/luhn-algorithm": "^1.0",
+        "nesbot/carbon": "^3.5"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.20",
+        "laravel/pint": "^1.0",
+        "spatie/ray": "^1.28"
+    },
+    "autoload": {
+        "psr-4": {
+            "Designbycode\\SouthAfricanIdValidator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Designbycode\\SouthAfricanIdValidator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
