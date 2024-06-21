@@ -7,10 +7,12 @@ use Designbycode\LuhnAlgorithm\LuhnAlgorithm;
 
 class SouthAfricanIdValidator
 {
-
     private const GENDER_MALE_MIN = 5000;
+
     private const GENDER_MALE_MAX = 9999;
+
     private const GENDER_FEMALE_MIN = 0;
+
     private const GENDER_FEMALE_MAX = 4999;
 
     /**
@@ -21,6 +23,7 @@ class SouthAfricanIdValidator
     public function isValid(mixed $idNumber): bool
     {
         $idNumber = $this->trimWhiteSpaces($idNumber);
+
         return ! (! $this->isLength13($idNumber) || ! $this->isNumber($idNumber) || ! $this->passesLuhnCheck($idNumber));
     }
 
@@ -50,6 +53,7 @@ class SouthAfricanIdValidator
     public function isMale(string $idNumber): bool
     {
         $genderDigits = $this->extractGenderDigits($idNumber);
+
         return $genderDigits >= self::GENDER_MALE_MIN && $genderDigits <= self::GENDER_MALE_MAX;
     }
 
@@ -57,6 +61,7 @@ class SouthAfricanIdValidator
     public function isFemale(string $idNumber): bool
     {
         $genderDigits = $this->extractGenderDigits($idNumber);
+
         return $genderDigits >= self::GENDER_FEMALE_MIN && $genderDigits <= self::GENDER_FEMALE_MAX;
     }
 
@@ -64,6 +69,7 @@ class SouthAfricanIdValidator
     public function isSACitizen($idNumber): bool
     {
         $idNumber = $this->trimWhiteSpaces($idNumber);
+
         // The 11th digit (index 10) indicates citizenship status
         return $idNumber[10] == '0';
     }
@@ -72,6 +78,7 @@ class SouthAfricanIdValidator
     public function isPermanentResident($idNumber): bool
     {
         $idNumber = $this->trimWhiteSpaces($idNumber);
+
         // The 11th digit (index 10) indicates citizenship status
         return $idNumber[10] == '1';
     }
@@ -80,7 +87,7 @@ class SouthAfricanIdValidator
     public function parse($idNumber): array
     {
         $idNumber = $this->trimWhiteSpaces($idNumber);
-        if (!$this->isValid($idNumber)) {
+        if (! $this->isValid($idNumber)) {
             throw new \InvalidArgumentException('Invalid ID number');
         }
 
@@ -113,6 +120,7 @@ class SouthAfricanIdValidator
     private function trimWhiteSpaces(mixed $idNumber): string
     {
         $idNumber = trim((string) $idNumber); // Remove spaces around the string
+
         return str_replace(' ', '', $idNumber); // Remove spaces within the string
     }
 

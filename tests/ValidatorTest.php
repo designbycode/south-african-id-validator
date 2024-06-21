@@ -46,12 +46,9 @@ it('can validate ID', function () {
     expect($this->validator->isValid($this->id))->toBeTrue();
 });
 
-
 it('can validate list of ID', function ($value) {
     expect($this->validator->isValid($this->id))->toBeTrue();
 })->with(['690124 0689 08 6', '8907290565082', '7809090453082', 9108200519082, '9006010051082']);
-
-
 
 it('parses a valid ID number', function () {
     $result = $this->validator->parse($this->id);
@@ -62,24 +59,22 @@ it('parses a valid ID number', function () {
         ->and($result['citizenship'])->toBeString();
 });
 
-
-it('should equal date of ISO from', function() {
+it('should equal date of ISO from', function () {
     $result = $this->validator->parse($this->id);
     expect($result['birthday']['iso'])->toEqual('1992-12-23');
 });
 
-it('should equal date of american from', function() {
+it('should equal date of american from', function () {
     $result = $this->validator->parse($this->id);
     expect($result['birthday']['american'])->toEqual('12/23/1992');
 });
 
-it('should equal date of european from', function() {
+it('should equal date of european from', function () {
     $result = $this->validator->parse($this->id);
     expect($result['birthday']['european'])->toEqual('23/12/1992');
 });
 
-it('should equal date of long format from', function() {
+it('should equal date of long format from', function () {
     $result = $this->validator->parse($this->id);
     expect($result['birthday']['long'])->toEqual('December 23, 1992');
 });
-
