@@ -94,7 +94,7 @@ class SouthAfricanIdValidator
         $birthDate = $this->extractBirthDate($idNumber);
 
         // Determine age
-        $age = $birthDate->diffInYears(Carbon::now());
+        $age = round($birthDate->diffInYears(Carbon::now()));
 
         // Determine gender
         $gender = $this->isMale($idNumber) ? 'Male' : 'Female';
@@ -105,7 +105,7 @@ class SouthAfricanIdValidator
         return [
             'valid' => $this->isValid($idNumber),
             'birthday' => [
-                'default' => $birthDate,
+                'default' => $birthDate->toDateString(),
                 'iso' => $birthDate->format('Y-m-d'),
                 'american' => $birthDate->format('m/d/Y'),
                 'european' => $birthDate->format('d/m/Y'),

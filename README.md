@@ -47,7 +47,13 @@ Output:
 Array
 (
     [valid] => 1
-    [birthday] => 1994/04/26
+    [birthday] => Arrya(
+        'default' => '1978-04-29',
+        'iso' => '1978-04-29',
+        'american' => '04/29/1978',
+        'european' => '04/29/1978',
+        'long' => 'April 29, 1978',
+    )
     [age] => 28
     [gender] => Male
     [citizenship] => SA Citizen

@@ -53,7 +53,7 @@ it('can validate list of ID', function ($value) {
 it('parses a valid ID number', function () {
     $result = $this->validator->parse($this->id);
     expect($result['valid'])->toBeTrue()
-        ->and($result['birthday']['default'])->toBeInstanceOf(Carbon\Carbon::class)
+        ->and($result['birthday']['default'])->toBeString(Carbon\Carbon::class)
         ->and($result['age'])->toBeGreaterThan(0)
         ->and($result['gender'])->toBeString()
         ->and($result['citizenship'])->toBeString();
