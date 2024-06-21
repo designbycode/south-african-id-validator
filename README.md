@@ -78,39 +78,39 @@ if ($validator->isSACitizen($idNumber)) {
 **Methods**
 ---------
 
-### `isValid(string $idNumber): bool`
+### `isValid(mixed $idNumber): bool`
 
 Validates the ID number using the Luhn Algorithm and checks if it has a length of 13 digits and is numeric.
 
-### `isLength13(string $idNumber): bool`
+### `isLength13(mixed $idNumber): bool`
 
 Checks if the ID number has a length of 13 digits.
 
-### `isNumber(string $idNumber): bool`
+### `isNumber(mixed $idNumber): bool`
 
 Checks if the ID number is numeric.
 
-### `isValidLuhn(string $idNumber): bool`
+### `passesLuhnCheck(mixed $idNumber): bool`
 
 Validates the ID number using the Luhn Algorithm.
 
-### `isMale(string $idNumber): bool`
+### `isMale(mixed $idNumber): bool`
 
 Determines if the ID number is for a male.
 
-### `isFemale(string $idNumber): bool`
+### `isFemale(mixed $idNumber): bool`
 
 Determines if the ID number is for a female.
 
-### `isSACitizen(string $idNumber): bool`
+### `isSACitizen(mixed $idNumber): bool`
 
 Determines if the ID number is for a South African citizen.
 
-### `isPermanentResident(string $idNumber): bool`
+### `isPermanentResident(mixed $idNumber): bool`
 
 Determines if the ID number is for a permanent resident.
 
-### `parse(string $idNumber): array`
+### `parse(mixed $idNumber): array`
 
 Parses the ID number and returns an array with the following information:
 
