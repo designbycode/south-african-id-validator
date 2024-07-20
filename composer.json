@@ -1,6 +1,6 @@
 {
     "name": "designbycode/south-african-id-validator",
-    "description": "This is my package south-african-id-validator",
+    "description": "The South African ID Validator is a PHP class that validates and extracts information from South African ID numbers. It uses the Luhn Algorithm to validate the ID number and provides methods to determine the gender, citizenship, and birthdate of the individual.\n\n",
     "keywords": [
         "designbycode",
         "south-african-id-validator"
